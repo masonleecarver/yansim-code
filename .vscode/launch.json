@@ -17,6 +17,19 @@
         },
 
         {
+            "name": "Unicorns Project",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build-sandbox-Unicorns",
+            "program": "${workspaceFolder}/sandbox/Unicorns/bin/Debug/net8.0/Unicorns.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/sandbox/Unicorns",
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "stopAtEntry": false
+        },
+
+        {
             "name": "C# Prep 1",
             "type": "coreclr",
             "request": "launch",
