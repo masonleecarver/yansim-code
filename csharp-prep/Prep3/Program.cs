@@ -9,6 +9,7 @@ class Program
         int number = rnd.Next(1, 10);
         string guessed_number;
         int guess;
+        int guesses = 0;
 
         do
         {
@@ -24,12 +25,14 @@ class Program
             {
                 Console.WriteLine("Higher!!");
             }
+            guesses += 1
         }
         while (guess != number);
 
         if (guess == number)
         {
-           Console.WriteLine("You got it, you smarty smart pants. :)");  
+           Console.WriteLine("You got it, you smarty smart pants. :)"); 
+           Console.WriteLine($"Took you {guesses} guesses.") 
         }
 
     }
