@@ -25,7 +25,7 @@ class Program
             {
                 Console.WriteLine("Higher!!");
             }
-            guesses += 1
+            guesses += 1;
         }
         while (guess != number);
 
