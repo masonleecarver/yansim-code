@@ -32,7 +32,7 @@ class Program
         if (guess == number)
         {
            Console.WriteLine("You got it, you smarty smart pants. :)"); 
-           Console.WriteLine($"Took you {guesses} guesses.") 
+           Console.WriteLine($"Took you {guesses} guesses."); 
         }
 
     }
