@@ -1,9 +1,55 @@
 using System;
+using System.Security.Cryptography.X509Certificates;
 
 class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Develop02 World!");
+        Menu();
+    }
+
+    static void Menu()
+    {
+        string choice = "0";
+        string options = "1) Write an entry\n2) Veiw last entry\n3) Save File\n4) Load File\n5) Quit";
+
+        Entry entry = new();
+        Journal journal = new();
+
+
+        do 
+        {
+            Console.WriteLine(options);
+            Console.Write("");
+            choice = Console.ReadLine();
+
+            if (choice == "1")
+            {
+                entry.GetNote();
+                entry.AddToList(journal);
+            }
+            else if (choice == "2")
+            {
+                journal.DisplayLast();
+            }
+            else if (choice == "3")
+            {
+                journal.SaveFile();
+            }
+            else if (choice == "4")
+            {
+                journal.LoadFile();
+            }
+            else if (choice == "5")
+            {
+                Console.WriteLine("Remember to write in your jounral every day.\n");
+            }
+            else
+            {
+                Console.WriteLine("What?");
+            }
+
+        }
+        while (choice != "5");
     }
 }
