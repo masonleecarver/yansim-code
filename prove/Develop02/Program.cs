@@ -30,7 +30,8 @@ class Program
             }
             else if (choice == "2")
             {
-                journal.Display();
+                journal.DiplayReadiness();
+                journal.Display(journal);
             }
             else if (choice == "3")
             {

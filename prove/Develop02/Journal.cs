@@ -5,6 +5,7 @@ using System.Linq;
 public class Journal {
 
     public List<string> entryList = new();
+    string path = "";
 
     public void SaveFile()
     {
@@ -37,35 +38,61 @@ public class Journal {
 
     public void LoadFile()
     {
+        Console.Write("Which file would you like to load?\n");
+        path = Console.ReadLine();
 
-        Console.Write("Which file would you like to read?\n");
-        string path = Console.ReadLine();
+        try
+        {
+            StreamReader sr = new StreamReader($"{path}");
+
+        }
+
+        catch (FileNotFoundException)
+        {
+            Console.WriteLine("File doesn't exist.");
+            path = "";
+        }
+
+        catch (Exception)
+        {
+            Console.WriteLine("Something else isn't right here.");
+            path = "";
+        }
+    }
+
+    public List<string> DiplayReadiness()
+    {
 
         try
         {
             StreamReader sr = new StreamReader($"{path}");
 
             string line = sr.ReadLine();
+            List<string> loadedEntries = new();
 
             while (line != null)
             {
-                Console.WriteLine(line);
+
+                loadedEntries.Add(line);
                 line = sr.ReadLine();
             }
 
             sr.Close();
-            Console.ReadLine();
+            return loadedEntries;
         }
 
         catch (FileNotFoundException)
         {
             Console.WriteLine("File doesn't exist.");
+            return [];
         }
 
         catch (Exception)
         {
             Console.WriteLine("Something else isn't right here.");
+            return [];
         }
+
 
     }
 
@@ -81,20 +108,41 @@ public class Journal {
         }
     }
 
-    public void Display()
+    public void Display(Journal journal)
     {
-        if (entryList.Count > 0)
+        try
         {
-           foreach (string entry in entryList)
+            List<string> loadedEntries = journal.DiplayReadiness();
+
+            if (loadedEntries.Count > 0)
             {
-                Console.WriteLine(entry);
-            } 
+                foreach (string entry in loadedEntries)
+                {
+                    Console.WriteLine(entry);
+                } 
+            }
+            else
+            {
+                Console.WriteLine("No entries to show.");
+            }
         }
-        else
+
+        catch (Exception)
         {
-            Console.WriteLine("No entries to show.");
+            if (entryList.Count > 0)
+            {
+                foreach (string entry in entryList)
+                {
+                    Console.WriteLine(entry);
+                }
+            }
+            else 
+            {
+                Console.WriteLine("Nothing to show.");
+            }
         }
     }
-
-
+ 
 }
+
+
