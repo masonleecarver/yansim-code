@@ -43,6 +43,7 @@ class Program
             else if (choice == "5")
             {
                 Console.WriteLine("Remember to write in your jounral every day.\n");
+                break;
             }
             else
             {

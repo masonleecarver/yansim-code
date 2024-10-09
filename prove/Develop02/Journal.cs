@@ -61,6 +61,12 @@ public class Journal {
         {
             Console.WriteLine("File doesn't exist.");
         }
+
+        catch (Exception)
+        {
+            Console.WriteLine("Something else isn't right here.");
+        }
+
     }
 
     public void DisplayLast()
