@@ -28,8 +28,7 @@ public class Promts
 
     public string RandomPrompt()
     {
-        int r = random.Next(promptList.Count);
-        string prompt = promptList[r];
+        string prompt = promptList[random.Next(promptList.Count)];
         return prompt;
     }
 }

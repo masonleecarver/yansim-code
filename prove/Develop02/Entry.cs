@@ -5,7 +5,7 @@ public class Entry
     static string note = "";
     static string prompt = "";
     static DateTime dateTime = DateTime.UtcNow.Date;
-    static string date = dateTime.ToString("dd/MM/yyyy");
+    static string date = dateTime.ToString("MM/dd/yyyy");
 
     public void GetNote() 
     {
@@ -24,8 +24,5 @@ public class Entry
         list.Add(newEntry);
 
     }
-
-
-
 
 }

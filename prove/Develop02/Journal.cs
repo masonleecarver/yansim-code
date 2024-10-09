@@ -6,12 +6,12 @@ public class Journal {
 
     public List<string> entryList = new();
 
-    static DateTime dateTime = DateTime.UtcNow.Date;
-    static string date = dateTime.ToString("dd-MM-yyyy");
-
     public void SaveFile()
     {
-        string path = "Journal-File.txt";
+
+        Console.Write("What do you want the file to be called? (do not include .txt - will save in same folder)\n");
+        string path = Console.ReadLine();
+        path = $"{path}.txt";
 
         using (StreamWriter sw = File.AppendText(path))
         {
@@ -37,18 +37,30 @@ public class Journal {
 
     public void LoadFile()
     {
-        StreamReader sr = new StreamReader("Journal-File.txt");
 
-        string line = sr.ReadLine();
+        Console.Write("Which file would you like to read?\n");
+        string path = Console.ReadLine();
 
-        while (line != null)
+        try
         {
-            Console.WriteLine(line);
-            line = sr.ReadLine();
+            StreamReader sr = new StreamReader($"{path}");
+
+            string line = sr.ReadLine();
+
+            while (line != null)
+            {
+                Console.WriteLine(line);
+                line = sr.ReadLine();
+            }
+
+            sr.Close();
+            Console.ReadLine();
         }
 
-        sr.Close();
-        Console.ReadLine();
+        catch (FileNotFoundException)
+        {
+            Console.WriteLine("File doesn't exist.");
+        }
     }
 
     public void DisplayLast()
@@ -65,9 +77,16 @@ public class Journal {
 
     public void Display()
     {
-        foreach (string entry in entryList)
+        if (entryList.Count > 0)
         {
-            Console.WriteLine(entry);
+           foreach (string entry in entryList)
+            {
+                Console.WriteLine(entry);
+            } 
+        }
+        else
+        {
+            Console.WriteLine("No entries to show.");
         }
     }
 

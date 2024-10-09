@@ -11,7 +11,7 @@ class Program
     static void Menu()
     {
         string choice = "0";
-        string options = "1) Write an entry\n2) Veiw last entry\n3) Save File\n4) Load File\n5) Quit";
+        string options = "1) Write an entry\n2) Display Entries\n3) Save File\n4) Load File\n5) Quit";
 
         Entry entry = new();
         Journal journal = new();
@@ -30,7 +30,7 @@ class Program
             }
             else if (choice == "2")
             {
-                journal.DisplayLast();
+                journal.Display();
             }
             else if (choice == "3")
             {
