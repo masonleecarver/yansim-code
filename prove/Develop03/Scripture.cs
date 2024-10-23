@@ -48,9 +48,13 @@ public class Scripture
         Console.Write($"\n\n(Non-Hidden Words Remaining: {_words.Count}) Press enter to continue. Enter \"quit\" to quit. ");
     }
 
+    private List<Word> GetNonHiddenWords()
+    {
+        return _words.Where(word => !word.Hidden()).ToList();
+    }
     private void Render()
     {
-        nonHiddenWords = _words.Where(word => !word.isHidden).ToList();
+        nonHiddenWords = GetNonHiddenWords();
 
         if (nonHiddenWords.Count < 3)
         {
@@ -61,7 +65,7 @@ public class Scripture
 
             isCompletelyHidden = true;
 
-            nonHiddenWords = _words.Where(word => !word.isHidden).ToList();
+            nonHiddenWords = GetNonHiddenWords();
 
             return;
         }
@@ -73,7 +77,7 @@ public class Scripture
             word.Hide();
         }
 
-        nonHiddenWords = _words.Where(word => !word.isHidden).ToList();
+        nonHiddenWords = GetNonHiddenWords();
     }
 
     public bool HiddenStatus()
