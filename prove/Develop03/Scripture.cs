@@ -25,7 +25,7 @@ public class Scripture
             string heading = reference.MakeHeading();
             List<Word> wordsList = new();
 
-            string[] words = verse.Split(new[]{' ',',','.'}, StringSplitOptions.RemoveEmptyEntries);
+            string[] words = verse.Split(new[]{' '}, StringSplitOptions.RemoveEmptyEntries);
             foreach (string word in words)
             {
                 Word wordObject = new Word(word);
