@@ -88,21 +88,20 @@ public class Scripture
     public void GetRenderedText()
     {
         Render();
+        // for (int i=0; i < _verses.Count + 1; i++)
+        // {
+        //     Console.SetCursorPosition(0, Console.CursorTop -1);
+        //     Console.Write(new string(' ', Console.WindowWidth));
+        // }   
+        // Console.SetCursorPosition(0, Console.CursorTop - _verses.Count + 1);
+
+        Console.Clear();
+        Console.SetCursorPosition(0, 0);
+
         foreach (Verse verse in _verses)
         {
-            Console.SetCursorPosition(0, Console.CursorTop -1);
-            Console.Write(new string(' ', Console.WindowWidth));
-            Console.SetCursorPosition(0, Console.CursorTop -1);
-            Console.Write(new string(' ', Console.WindowWidth));
-        }   
-        Console.SetCursorPosition(0, Console.CursorTop -1);
-        Console.Write(new string(' ', Console.WindowWidth));
-        foreach (Verse verse in _verses)
-        {
-            Console.Write(new string(' ', Console.WindowWidth));
-            Console.SetCursorPosition(0, Console.CursorTop - 1);
             string renderedText = string.Join(" ", verse.GetVerse().Select(word => word.Show()));
-            Console.Write($"\n{verse.GetHeading()}: {renderedText}.".PadRight(Console.WindowWidth));
+            Console.WriteLine($"{verse.GetHeading()}: {renderedText}".PadRight(Console.WindowWidth));
         }
         Console.Write($"\n\n(Non-Hidden Words Remaining: {nonHiddenWords.Count}) Press enter to continue. Enter \"quit\" to quit. ");
     }

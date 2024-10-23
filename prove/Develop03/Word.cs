@@ -15,15 +15,7 @@ public class Word
 
         if (isHidden == false)
         {
-            List<char> charList = _word.ToList();
-
-            for (int i = 0; i < charList.Count; i++)
-            {
-                charList[i] = '_';
-            }
-
-            _word = new string(charList.ToArray());
-
+            _word = new string('_', _word.Length);
             isHidden = true;
         }
 
