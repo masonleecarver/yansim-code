@@ -15,7 +15,7 @@ class Program
         {
             input = Console.ReadLine();
             // var key = Console.ReadKey(true);
-            if (input == "quit" || penny.isCompletelyHidden == true)
+            if (input == "quit" || penny.HiddenStatus() == true)
             {
                 break;
             }
@@ -24,7 +24,7 @@ class Program
                 penny.GetRenderedText();
             }
         }
-        while (input != "quit" || penny.isCompletelyHidden == false);
+        while (input != "quit" || penny.HiddenStatus() == false);
         
     }
 }

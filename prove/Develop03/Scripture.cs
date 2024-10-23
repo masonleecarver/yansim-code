@@ -7,7 +7,7 @@ public class Scripture
     List<Verse> _verses = new();
 
     List<Word> _words = new();
-    public bool isCompletelyHidden = false;
+    bool isCompletelyHidden = false;
     List<Word> nonHiddenWords = new();
     Random random = new();
 
@@ -41,8 +41,8 @@ public class Scripture
     {
         foreach (Verse verse in _verses)
         {
-            string renderedText = string.Join(" ", verse._verse.Select(word => word.Show()));
-            Console.Write($"\n{verse._heading}: {renderedText}");
+            string renderedText = string.Join(" ", verse.GetVerse().Select(word => word.Show()));
+            Console.Write($"\n{verse.GetHeading()}: {renderedText}");
         }
 
         Console.Write($"\n\n(Non-Hidden Words Remaining: {_words.Count}) Press enter to continue. Enter \"quit\" to quit. ");
@@ -76,22 +76,29 @@ public class Scripture
         nonHiddenWords = _words.Where(word => !word.isHidden).ToList();
     }
 
+    public bool HiddenStatus()
+    {
+        return isCompletelyHidden;
+    }
+
     public void GetRenderedText()
     {
-        Render();    
+        Render();
+        foreach (Verse verse in _verses)
+        {
+            Console.SetCursorPosition(0, Console.CursorTop -1);
+            Console.Write(new string(' ', Console.WindowWidth));
+            Console.SetCursorPosition(0, Console.CursorTop -1);
+            Console.Write(new string(' ', Console.WindowWidth));
+        }   
         Console.SetCursorPosition(0, Console.CursorTop -1);
         Console.Write(new string(' ', Console.WindowWidth));
-        Console.SetCursorPosition(0, Console.CursorTop - 1);
-        Console.Write(new string(' ', Console.WindowWidth));
-        Console.SetCursorPosition(0, Console.CursorTop - 1);
-        Console.Write(new string(' ', Console.WindowWidth));
-        Console.SetCursorPosition(0, Console.CursorTop - 1);
         foreach (Verse verse in _verses)
         {
             Console.Write(new string(' ', Console.WindowWidth));
             Console.SetCursorPosition(0, Console.CursorTop - 1);
-            string renderedText = string.Join(" ", verse._verse.Select(word => word.Show()));
-            Console.Write($"\n{verse._heading}: {renderedText}".PadRight(Console.WindowWidth));
+            string renderedText = string.Join(" ", verse.GetVerse().Select(word => word.Show()));
+            Console.Write($"\n{verse.GetHeading()}: {renderedText}.".PadRight(Console.WindowWidth));
         }
         Console.Write($"\n\n(Non-Hidden Words Remaining: {nonHiddenWords.Count}) Press enter to continue. Enter \"quit\" to quit. ");
     }
