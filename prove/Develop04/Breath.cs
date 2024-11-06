@@ -11,7 +11,7 @@ public class Breath : Activity
 
         Console.Clear();
 
-        int rounds = seconds/9;
+        int rounds = seconds/12;
 
         Console.WriteLine("Get Ready!");
         Animation(5);
@@ -21,8 +21,10 @@ public class Breath : Activity
         {
             NumberAnimation("Breath in....", 4);
             Console.WriteLine("");
-            NumberAnimation("Breath out....", 5);
-            Console.WriteLine("\n\n");
+            NumberAnimation("Hold....", 4);
+            Console.WriteLine("");
+            NumberAnimation("Breath out....", 4);
+            Console.WriteLine("\n");
 
         }
 

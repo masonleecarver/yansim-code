@@ -5,8 +5,6 @@ public class Activity
     private string _name;
     private string _welcomeMessage;
 
-    private bool _timeUp = false;
-
     public Activity(string name, string welcomeMessage)
     {
         _name = name;
@@ -21,15 +19,16 @@ public class Activity
 
     public void Animation(int seconds)
     {
+        // int cursorPos = Console.CursorTop;
+        bool toggle = true;
 
         for (int i = seconds; i >  0; i--)
         {
-            Console.Write("+");
-
+            // Console.SetCursorPosition(0, cursorPos);
+            Console.Write(toggle ? "⤡" : "⤢");
             Thread.Sleep(500);
-
-            Console.Write("\b \b"); // Erase the + character
-            Console.Write("-"); // Replace it with the - character
+            Console.Write("\b");
+            toggle = !toggle;
         }
 
     }
@@ -42,30 +41,20 @@ public class Activity
         for (int i = seconds; i > 0; i--)
         {
             Console.SetCursorPosition(0, cursorPos);
-            Console.Write($"{starter} {seconds}");
+            if (seconds <= 1)
+            {
+                Console.Write(new string(' ', Console.WindowWidth));
+                Console.SetCursorPosition(0, cursorPos);
+                Console.Write(starter);
+            }
+            else
+            {
+                Console.Write($"{starter} {seconds}");
+            }
             Thread.Sleep(1000);
             seconds -= 1;
         }
     }
-    public void Countdown(int seconds)
-    {
-        _timeUp = false;
-
-        for (int i = seconds; i > 0; i--)
-        {
-            Thread.Sleep(1000);
-        }
-        
-        _timeUp = true;
-
-    }
-
-
-    public bool TimeUp()
-    {
-        return _timeUp;
-    }
-
     public void Welcome()
     {
         Console.Clear();

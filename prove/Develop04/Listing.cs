@@ -15,6 +15,8 @@ public class Listing : Activity
 
     private List<string> writtenEntries = new();
 
+    private bool _timeUp = false;
+
     public Listing(string name, string welcomeMessage)
         :base(name, welcomeMessage)
     {}
@@ -33,7 +35,7 @@ public class Listing : Activity
         Parallel.Invoke(
             () => Countdown(seconds),
             () => {
-                while (TimeUp() != true)
+                while (_timeUp != true)
                 {
                 WriteEntries(); 
                 }
@@ -52,6 +54,19 @@ public class Listing : Activity
         {
             writtenEntries.Add(entry); 
         }  
+    }
+
+    private void Countdown(int seconds)
+    {
+        _timeUp = false;
+
+        for (int i = seconds; i > 0; i--)
+        {
+            Thread.Sleep(1000);
+        }
+        
+        _timeUp = true;
+
     }
 
 }

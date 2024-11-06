@@ -54,8 +54,8 @@ public class Reflection : Activity
         Console.WriteLine("\n");
         for (int i = rounds; i > 0; i--)
         {
-            Console.Write(Question());
-            Countdown(8);
+            Console.Write($"{Question()}  ");
+            Animation(16);
             Console.WriteLine("");
         }
 
@@ -63,4 +63,6 @@ public class Reflection : Activity
 
         Goodbye(seconds);
     }
+
+    
 }
