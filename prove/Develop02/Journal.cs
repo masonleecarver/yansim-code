@@ -4,21 +4,21 @@ using System.Linq;
 
 public class Journal {
 
-    public List<string> entryList = new();
-    string path = "";
+    public List<string> _entryList = new();
+    string _path = "";
 
     public void SaveFile()
     {
 
         Console.Write("What do you want the file to be called? (do not include .txt - will save in same folder)\n");
         string path = Console.ReadLine();
-        path = $"{path}.txt";
+        _path = $"{path}.txt";
 
         using (StreamWriter sw = File.AppendText(path))
         {
-            if (entryList.Count > 0)
+            if (_entryList.Count > 0)
             {
-                foreach (string entry in entryList)
+                foreach (string entry in _entryList)
                 {
                     sw.WriteLine(entry);
                 }
@@ -30,7 +30,7 @@ public class Journal {
             
         }
 
-        entryList = [];
+        _entryList = [];
 
         Console.WriteLine("File saved successfully :). All previous entries cleared.");
 
@@ -39,24 +39,27 @@ public class Journal {
     public void LoadFile()
     {
         Console.Write("Which file would you like to load?\n");
-        path = Console.ReadLine();
+        _path = Console.ReadLine();
 
         try
         {
-            StreamReader sr = new StreamReader($"{path}");
+            StreamReader sr = new StreamReader($"{_path}");
 
         }
 
         catch (FileNotFoundException)
         {
             Console.WriteLine("File doesn't exist.");
-            path = "";
+            _path = "";
         }
 
         catch (Exception)
         {
-            Console.WriteLine("Something else isn't right here.");
-            path = "";
+            foreach(string entry in _entryList)
+            {
+                Console.WriteLine(entry);
+            }
+            _path = "";
         }
     }
 
@@ -65,7 +68,7 @@ public class Journal {
 
         try
         {
-            StreamReader sr = new StreamReader($"{path}");
+            StreamReader sr = new StreamReader($"{_path}");
 
             string line = sr.ReadLine();
             List<string> loadedEntries = new();
@@ -98,9 +101,9 @@ public class Journal {
 
     public void DisplayLast()
     {
-        if (entryList.Count > 0)
+        if (_entryList.Count > 0)
         {
-           Console.WriteLine(entryList.Last()); 
+           Console.WriteLine(_entryList.Last()); 
         }
         else
         {
@@ -129,9 +132,9 @@ public class Journal {
 
         catch (Exception)
         {
-            if (entryList.Count > 0)
+            if (_entryList.Count > 0)
             {
-                foreach (string entry in entryList)
+                foreach (string entry in _entryList)
                 {
                     Console.WriteLine(entry);
                 }

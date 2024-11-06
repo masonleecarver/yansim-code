@@ -2,25 +2,25 @@ using System.Security.Cryptography.X509Certificates;
 
 public class Entry 
 {
-    static string note = "";
-    static string prompt = "";
-    static DateTime dateTime = DateTime.UtcNow.Date;
-    static string date = dateTime.ToString("MM/dd/yyyy");
+    static string _note = "";
+    static string _prompt = "";
+    static DateTime _dateTime = DateTime.UtcNow.Date;
+    static string _date = _dateTime.ToString("MM/dd/yyyy");
 
     public void GetNote() 
     {
-        note = "";
+        _note = "";
         Promts obj = new();
-        prompt = obj.RandomPrompt();
-        Console.Write($"{prompt}\n");
-        note = Console.ReadLine();
-        note = $"{date}\nPrompt: {prompt}\n{note}\n";
+        _prompt = obj.RandomPrompt();
+        Console.Write($"{_prompt}\n");
+        _note = Console.ReadLine();
+        _note = $"{_date}\nPrompt: {_prompt}\n{_note}\n";
     }
 
     public void AddToList(Journal journal)
     {
-        string newEntry = note;
-        List<string> list = journal.entryList;
+        string newEntry = _note;
+        List<string> list = journal._entryList;
         list.Add(newEntry);
 
     }

@@ -1,7 +1,7 @@
 public class Promts
 {
     static Random random = new Random();
-    public List<string> promptList = new List<string> {
+    public List<string> _promptList = new List<string> {
         "What are you grateful for today?",
             "Who are you grateful for today?",
             "What went well today? What was difficult? Why?",
@@ -28,7 +28,7 @@ public class Promts
 
     public string RandomPrompt()
     {
-        string prompt = promptList[random.Next(promptList.Count)];
+        string prompt = _promptList[random.Next(_promptList.Count)];
         return prompt;
     }
 }
