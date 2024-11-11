@@ -1,5 +1,3 @@
-using System.Timers;
-
 public class Activity
 {
     private string _name;
