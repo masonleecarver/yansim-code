@@ -7,8 +7,8 @@ public class Scripture
     List<Verse> _verses = new();
 
     List<Word> _words = new();
-    bool isCompletelyHidden = false;
-    List<Word> nonHiddenWords = new();
+    bool _isCompletelyHidden = false;
+    List<Word> _nonHiddenWords = new();
     Random random = new();
 
     public Scripture(List<Reference> references)
@@ -54,35 +54,35 @@ public class Scripture
     }
     private void Render()
     {
-        nonHiddenWords = GetNonHiddenWords();
+        _nonHiddenWords = GetNonHiddenWords();
 
-        if (nonHiddenWords.Count < 3)
+        if (_nonHiddenWords.Count < 3)
         {
-            foreach (Word word in nonHiddenWords)
+            foreach (Word word in _nonHiddenWords)
             {
                 word.Hide();
             }
 
-            isCompletelyHidden = true;
+            _isCompletelyHidden = true;
 
-            nonHiddenWords = GetNonHiddenWords();
+            _nonHiddenWords = GetNonHiddenWords();
 
             return;
         }
 
-        var selectedWords = nonHiddenWords.OrderBy(x => random.Next()).Take(3).ToList();
+        var selectedWords = _nonHiddenWords.OrderBy(x => random.Next()).Take(3).ToList();
 
         foreach (Word word in selectedWords)
         {
             word.Hide();
         }
 
-        nonHiddenWords = GetNonHiddenWords();
+        _nonHiddenWords = GetNonHiddenWords();
     }
 
     public bool HiddenStatus()
     {
-        return isCompletelyHidden;
+        return _isCompletelyHidden;
     }
 
     public void GetRenderedText()
@@ -103,7 +103,7 @@ public class Scripture
             string renderedText = string.Join(" ", verse.GetVerse().Select(word => word.Show()));
             Console.WriteLine($"{verse.GetHeading()}: {renderedText}".PadRight(Console.WindowWidth));
         }
-        Console.Write($"\n\n(Non-Hidden Words Remaining: {nonHiddenWords.Count}) Press enter to continue. Enter \"quit\" to quit. ");
+        Console.Write($"\n\n(Non-Hidden Words Remaining: {_nonHiddenWords.Count}) Press enter to continue. Enter \"quit\" to quit. ");
     }
 
 }

@@ -3,7 +3,7 @@ using System.Linq;
 public class Word
 {
     string _word = "";
-    bool isHidden = false;
+    bool _isHidden = false;
 
     public Word(string word)
     {
@@ -13,10 +13,10 @@ public class Word
     public void Hide()
     {
 
-        if (isHidden == false)
+        if (_isHidden == false)
         {
             _word = new string('_', _word.Length);
-            isHidden = true;
+            _isHidden = true;
         }
 
     }
@@ -27,7 +27,7 @@ public class Word
 
     public bool Hidden()
     {
-        return isHidden;
+        return _isHidden;
     }
 
 }
