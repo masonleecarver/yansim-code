@@ -9,7 +9,7 @@ class Program
         Item finger = new Item("A Sixth Finger", "So writing journals becomes that much easier.", 600);
         Item money = new Item("A Wad of Cash", "It's just a pile of cash.", 50);
         string input = "0";
-        Goals eventHandler = new Goals();
+        Event eventHandler = new Event();
         Shop shop = new Shop([unicorn, ninjana, finger, money]);
 
         do

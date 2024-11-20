@@ -8,7 +8,7 @@ public class Shop
         _shopInventory = shopInventory;
     }
 
-    public void Shopping(Goals goals)
+    public void Shopping(Event goals)
     {
         Console.WriteLine("You can either:\n\t1. Buy Something\n\t2. Veiw what you've bought\n\t3. Return");
         Console.Write("What would you like to do? ");
@@ -32,7 +32,7 @@ public class Shop
         }
     }
 
-    public void Buy(Goals goals)
+    public void Buy(Event goals)
     {
         Console.WriteLine("The items we have for sell are: ");
         for(int i = 0; i < _shopInventory.Count; i++)

@@ -1,6 +1,6 @@
 using System.IO;
 
-public class Goals
+public class Event
 {
     private List<Goal> _goals = new();
     private int _totalPoints = 0;
@@ -57,7 +57,7 @@ public class Goals
         }
     }
 
-    public void CompleteGoals(Goals para)
+    public void CompleteGoals(Event para)
     {
 
         List<Goal> uncomplete = _goals.Where(goal => !goal.Completed()).ToList();

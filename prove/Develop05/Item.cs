@@ -26,7 +26,7 @@ public class Item
         return _cost;
     }
 
-    public void Sell(Goals goals)
+    public void Sell(Event goals)
     {
         goals.RemovePoints(_cost);
     }

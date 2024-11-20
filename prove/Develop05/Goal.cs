@@ -48,7 +48,7 @@ abstract public class Goal
         _completed = completed;
     }
 
-    public virtual void EndMessage(Goals goals)
+    public virtual void EndMessage(Event goals)
     {
         Console.WriteLine($"Congrats! You earned {_points} points.");
         goals.AddPoints(_points);
