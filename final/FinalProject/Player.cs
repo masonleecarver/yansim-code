@@ -2,7 +2,7 @@ public class Player : Character
 {
     int _level = 1;
     int _exp = 0;
-    int _money = 0;
+    int _money = 20;
     List<Item> _inventory = new();
 
     public Player(string name, int maxHealth, int speed, int attack, Weapon weapon, Armor armor) :base(name, maxHealth, speed, attack, weapon, armor) {}
@@ -19,6 +19,21 @@ public class Player : Character
     {
         Console.Write("What is the name of your hero? ");
         _name = Console.ReadLine();
+    }
+
+    public int GetMoney()
+    {
+        return _money;
+    }
+
+    public Weapon GetWeapon()
+    {
+        return _weapon;
+    }
+
+    public Armor GetArmor()
+    {
+        return _armor;
     }
 
     public void ChangeMoney(int money)
@@ -46,9 +61,9 @@ public class Player : Character
         _health += healed;
     }
 
-    public void AddInventory(List<Item> items)
+    public void AddInventory(Item item)
     {
-        _inventory.AddRange(items);
+        _inventory.Add(item);
     }
 
     public void RemoveInventory(Item item)

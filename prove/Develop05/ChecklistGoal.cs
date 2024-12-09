@@ -42,7 +42,7 @@ public class ChecklistGoal : Goal
         _done = done;
     }
 
-    public override void EndMessage(Goals goals)
+    public override void EndMessage(Event goals)
     {
         _done += 1;
 

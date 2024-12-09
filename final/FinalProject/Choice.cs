@@ -34,12 +34,12 @@ public class Choice
             input = Console.ReadLine();
             if (input == "1")
             {
-                OutcomeOne();
+                this.OutcomeOne();
                 break;
             }
             else if (input == "2")
             {
-                OutcomeTwo();
+                this.OutcomeTwo();
                 break;
             }
             else if (input == "3")
