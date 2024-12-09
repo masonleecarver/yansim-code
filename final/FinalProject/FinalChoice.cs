@@ -12,11 +12,13 @@ public class FinalChoice : Choice
     }
     public override void OutcomeOne()
     {
+        Console.Clear();
         Console.WriteLine(_ending1);
     }
 
     public override void OutcomeTwo()
     {
+        Console.Clear();
         Console.WriteLine(_ending2);
     }
 }

@@ -21,6 +21,8 @@ public class Choice
     }
     public virtual void Choose()
     {
+        Console.Clear();
+    
         Console.WriteLine($"{_choiceArrival}\n");
         Console.WriteLine($"You have two choices....");
         Thread.Sleep(1000);
@@ -52,8 +54,6 @@ public class Choice
             }
         }
         while (input != "1" | input != "2");
-
-        Console.Clear();
     }
 
     public virtual void OutcomeOne()

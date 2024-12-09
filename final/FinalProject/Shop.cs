@@ -113,7 +113,7 @@ public class Shop
                 Console.WriteLine($"\t{i+1}. {weapons[i].GetName()} - {weapons[i].GetDamage()} ATK");
             }
             Console.Write("Which do you want to equip? (type 13 to quit): ");
-           int choice = Int32.Parse(Console.ReadLine());
+            int choice = Int32.Parse(Console.ReadLine());
             if(choice != 13)
             {
                 Weapon item = weapons[choice-1];     
