@@ -53,6 +53,15 @@ public abstract class Character
         return _name;
     }
 
+    public void ManualHealth(int hp)
+    {
+        _health = hp;
+    }
+
+    public void SetAlive(bool alive)
+    {
+        _alive = alive;
+    }
 
     public void TakeDamage(int damage, Character character)
     {
@@ -71,7 +80,7 @@ public abstract class Character
             Defeated(character);
         }
 
-        Console.WriteLine($"{_name} now has {_health} HP left!");
+        Console.WriteLine($"{_name} now has {_health} HP left!\n");
         Thread.Sleep(2000);
     }
 

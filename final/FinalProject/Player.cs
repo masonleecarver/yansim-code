@@ -10,11 +10,6 @@ public class Player : Character
     {
         return _inventory;
     }
-
-    public void ManualHealth(int hp)
-    {
-        _health = hp;
-    }
     public void SetName()
     {
         Console.Write("What is the name of your hero? ");
@@ -83,13 +78,21 @@ public class Player : Character
 
             Console.WriteLine($"Congrats! {_name} leveled up to level {_level}!");
 
-            _exp = 0;
+            _exp -= 100;
+            LevelUp();
         }
     }
 
-    public override void Defeated(Character enemy)
+    public override void Defeated(Character character)
     {
-        // game over. battle resets. stuff like that.
+        if (character is Enemy enemy)
+        {
+            enemy.ChangeAttack(2);
+        }
+        else 
+        {
+            Console.WriteLine(".... what?");
+        }
     }
 
 }

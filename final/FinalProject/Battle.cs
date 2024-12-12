@@ -1,7 +1,9 @@
 public class Battle 
 {
-    List<Character> _fighters = new();
+    List<Character> _fighters;
     List<Character> _enemies;
+    List<Character> _fightersCopy;
+    List<Character> _enemiesCopy;
     Player _player1;
     bool _over = false;
 
@@ -10,10 +12,12 @@ public class Battle
     public Battle(List<Character> enemies, Player player1) 
     {
         _enemies = enemies;
+        _enemiesCopy = new List<Character>(_enemies);
         _player1 = player1;
         _fighters = new List<Character>(_enemies);
         _fighters.Add(_player1);
         _fighters = _fighters.OrderByDescending(fighter => fighter.GetSpeed()).ToList();
+        _fightersCopy = new List<Character>(_fighters);
 
     }
 
@@ -30,6 +34,11 @@ public class Battle
                 {
                     _over = true;
                     Console.WriteLine("You lost...");
+                    Thread.Sleep(2000);
+                    Console.WriteLine("But you need to do it again until you win.");
+                    Reset();
+                    toRemove.Clear();
+                    Turn();
                     break;
                 }
 
@@ -51,15 +60,15 @@ public class Battle
 
                     if (fighter is Player && fighter.GetAlive())
                     {
-                        Console.WriteLine($"{fighter.GetName()}'s turn!\n");
+                        Console.WriteLine($"{fighter.GetName()}'s turn!");
                         Thread.Sleep(1000);
                         
                         toRemove.AddRange(PlayerTurn(_player1));
                     }
 
-                    else if (fighter is Enemy enemy && fighter.GetAlive())
+                    else if (fighter is Enemy enemy && fighter.GetAlive() && _player1.GetAlive())
                     {
-                        Console.WriteLine($"{fighter.GetName()}'s turn!\n");
+                        Console.WriteLine($"{fighter.GetName()}'s turn!");
                         Thread.Sleep(1000);
                         
                         enemy.Attack(_player1);
@@ -113,7 +122,7 @@ public class Battle
             player.Attack(enemyChoice);
             if (enemyChoice.GetAlive() == false)
             {
-                Console.WriteLine($"\n{enemyChoice.GetName()} was defeated B)");
+                Console.WriteLine($"{enemyChoice.GetName()} was defeated B)\n");
                 toRemove.Add(enemyChoice);
             }
         }
@@ -193,6 +202,19 @@ public class Battle
             Thread.Sleep(2000);
             return;
         }
+    }
+
+    public void Reset()
+    {
+        _over = false;
+        _fighters = new List<Character>(_fightersCopy);
+        _enemies = new List<Character>(_enemiesCopy);
+        foreach (Character fighter in _fighters)
+        {
+            fighter.ManualHealth(fighter.GetMaxHealth());
+            fighter.SetAlive(true);
+        }
+
     }
 
 }

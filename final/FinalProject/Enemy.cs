@@ -11,6 +11,10 @@ public class Enemy : Character
         _moneyGiven = moneyGiven;
     }
 
+    public void ChangeAttack(int attack)
+    {
+        _attack = attack;
+    }
     public override void Defeated(Character character)
     {
         if(character is Player player)
